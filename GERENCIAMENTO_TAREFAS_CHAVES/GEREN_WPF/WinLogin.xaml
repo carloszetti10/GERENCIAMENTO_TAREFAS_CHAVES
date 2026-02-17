@@ -1,0 +1,76 @@
+﻿<Window x:Class="GERENC_WPF.WinLogin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GERENC_WPF"
+        xmlns:helper="clr-namespace:GERENC_WPF.Helper"
+        mc:Ignorable="d"
+        Title="Login"
+        Height="200"
+        Width="300"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+    
+
+    <Grid >
+
+        <Grid Margin="20">
+
+            <!-- Definições -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Usuário -->
+            <TextBlock Text="Usuário:"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   VerticalAlignment="Center"
+                   Margin="0,0,10,10"/>
+
+            <TextBox Grid.Row="0"
+                 Grid.Column="1"
+                 Height="25"
+                 Margin="0,0,0,10"
+                 Text="{Binding Usuario, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <!-- Senha -->
+            <TextBlock Text="Senha:"
+                   Grid.Row="1"
+                   Grid.Column="0"
+                   VerticalAlignment="Center"
+                   Margin="0,0,10,10"/>
+
+            <PasswordBox Grid.Row="1"
+                     Grid.Column="1"
+                     Height="25"
+                     Margin="0,0,0,10"
+                     helper:PasswordBoxHelper.BindPassword="True"
+                     helper:PasswordBoxHelper.Password="{Binding Senha, Mode=TwoWay}"/>
+
+            <!-- Botão -->
+            <Button Content="Logar"
+                Grid.Row="2"
+                Grid.ColumnSpan="2"
+                Width="65"
+                Height="40"
+                HorizontalAlignment="Center"
+                Margin="0,10,0,0"
+                Style="{StaticResource ButtonPadrao}"
+                Command="{Binding LogarCommand}" 
+                CommandParameter="{Binding ElementName=txtSenha}" />
+
+        </Grid>
+
+    </Grid>
+</Window> 
+

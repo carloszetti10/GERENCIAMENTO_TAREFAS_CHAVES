@@ -1,0 +1,44 @@
+﻿<Application x:Class="GERENC_WPF.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:GERENC_WPF"
+             
+             xmlns:vm="clr-namespace:GERENC_WPF.ViewModels"
+             xmlns:view="clr-namespace:GERENC_WPF.View.PagePrinc"
+             
+ 
+             
+             ShutdownMode="OnExplicitShutdown">
+
+
+    <Application.Resources>
+
+        <ResourceDictionary>
+
+            <!-- ================= MERGED DICTIONARIES ================= -->
+            <ResourceDictionary.MergedDictionaries>
+
+                <!-- TEMA -->
+                <ResourceDictionary Source="/Resources/Styles/TemaClaro.xaml"/>
+
+                <!-- COMPONENTES -->
+                <ResourceDictionary Source="/Resources/Styles/Componetes/Buttons.xaml"/>
+                <ResourceDictionary Source="/Resources/Styles/Componetes/Cards.xaml"/>
+                <ResourceDictionary Source="/Resources/Styles/Componetes/Tables.xaml"/>
+                <ResourceDictionary Source="/Resources/Styles/Componetes/TexBox.xaml"/>
+
+            </ResourceDictionary.MergedDictionaries>
+            
+
+            <!-- ================= DATATEMPLATES PRINCIPAIS ================= -->
+
+            <DataTemplate DataType="{x:Type vm:GerencTarefaViewModel}">
+                <view:GerencTarefaView/>
+            </DataTemplate>
+
+         
+
+        </ResourceDictionary>
+
+    </Application.Resources>
+</Application>

@@ -1,0 +1,198 @@
+﻿<Window x:Class="GERENC_WPF.View.TarefaView.TarefaCadView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        Title="Cadastro de Tarefa"
+        Height="700"
+        Width="650"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize">
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </Window.Resources>
+
+
+    <GroupBox Header="Cadastro de Tarefa"
+              Margin="10"
+              Padding="5">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- INSTRUTOR -->
+            <GroupBox Header="Instrutor" Grid.Row="0" Margin="0,0,0,5">
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Height="36" IsReadOnly="True" Text="{Binding InstrutorNome}"/>
+                    <Button Grid.Column="1" Height="36" Padding="12,0"
+                            Command="{Binding BuscarInstrutorCommand}">
+                        <fa:FontAwesome Icon="Search"/>
+                    </Button>
+                </Grid>
+            </GroupBox>
+
+            <!-- CURSO -->
+            <GroupBox Header="Curso" Grid.Row="1" Margin="0,0,0,5">
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Height="36" IsReadOnly="True"/>
+                    <Button Grid.Column="1" Height="36" Padding="12,0"
+                            Command="{Binding BuscarCursoCommand}">
+                        <fa:FontAwesome Icon="Search"/>
+                    </Button>
+                </Grid>
+            </GroupBox>
+
+            <!-- SALA + CHAVE -->
+            <GroupBox Header="Sala / Chave" Grid.Row="2" Margin="0,0,0,5">
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox Height="36" IsReadOnly="True" Margin="0,0,10,0"/>
+                    <TextBox Grid.Column="1" Height="36" IsReadOnly="True" Margin="0,0,10,0"/>
+                    <Button Grid.Column="2" Height="36" Padding="12,0"
+                            Command="{Binding BuscarSalaCommand}">
+                        <fa:FontAwesome Icon="Search"/>
+                    </Button>
+                </Grid>
+            </GroupBox>
+
+            <!-- PERÍODO -->
+            <GroupBox Header="Período" Grid.Row="3" Margin="0,0,0,5">
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel>
+                        <TextBlock  Text="Data Inicial"/>
+                        <DatePicker Height="28"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2">
+                        <TextBlock Text="Data Final"/>
+                        <DatePicker Height="28"/>
+                    </StackPanel>
+                </Grid>
+            </GroupBox>
+
+            <!-- DIAS + HORÁRIOS -->
+            <GroupBox Header="Dias da Semana e Horários" Grid.Row="4">
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="1" Text="Hora Inicial" FontWeight="Bold"/>
+                    <TextBlock Grid.Row="0" Grid.Column="3" Text="Hora Final" FontWeight="Bold"/>
+
+                    <!-- SEGUNDA -->
+                    <CheckBox x:Name="chkSegunda" Grid.Row="1" Content="Segunda"/>
+                    <xctk:TimePicker Grid.Row="1"
+                         Grid.Column="1"
+                         Visibility="{Binding IsChecked, ElementName=chkSegunda, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                    <xctk:TimePicker Grid.Row="1"
+                         Grid.Column="3"
+                         Visibility="{Binding IsChecked, ElementName=chkSegunda, Converter={StaticResource BoolToVisibilityConverter}}"/>
+
+                    <!-- TERÇA -->
+                    <CheckBox x:Name="chkTerca" Grid.Row="2" Content="Terça"/>
+                    <xctk:TimePicker Grid.Row="2"
+                         Grid.Column="1"
+                         Visibility="{Binding IsChecked, ElementName=chkTerca, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                    <xctk:TimePicker Grid.Row="2"
+                         Grid.Column="3"
+                         Visibility="{Binding IsChecked, ElementName=chkTerca, Converter={StaticResource BoolToVisibilityConverter}}"/>
+
+                    <!-- QUARTA -->
+                    <CheckBox x:Name="chkQuarta" Grid.Row="3" Content="Quarta"/>
+                    <xctk:TimePicker Grid.Row="3"
+                         Grid.Column="1"
+                         Visibility="{Binding IsChecked, ElementName=chkQuarta, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                    <xctk:TimePicker Grid.Row="3"
+                         Grid.Column="3"
+                         Visibility="{Binding IsChecked, ElementName=chkQuarta, Converter={StaticResource BoolToVisibilityConverter}}"/>
+
+                    <!-- QUINTA -->
+                    <CheckBox x:Name="chkQuinta" Grid.Row="4" Content="Quinta"/>
+                    <xctk:TimePicker Grid.Row="4"
+                         Grid.Column="1"
+                         Visibility="{Binding IsChecked, ElementName=chkQuinta, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                    <xctk:TimePicker Grid.Row="4"
+                         Grid.Column="3"
+                         Visibility="{Binding IsChecked, ElementName=chkQuinta, Converter={StaticResource BoolToVisibilityConverter}}"/>
+
+                    <!-- SEXTA -->
+                    <CheckBox x:Name="chkSexta" Grid.Row="5" Content="Sexta"/>
+                    <xctk:TimePicker Grid.Row="5"
+                         Grid.Column="1"
+                         Visibility="{Binding IsChecked, ElementName=chkSexta, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                    <xctk:TimePicker Grid.Row="5"
+                         Grid.Column="3"
+                         Visibility="{Binding IsChecked, ElementName=chkSexta, Converter={StaticResource BoolToVisibilityConverter}}"/>
+
+                    <!-- SÁBADO -->
+                    <CheckBox x:Name="chkSabado" Grid.Row="6" Content="Sábado"/>
+                    <xctk:TimePicker Grid.Row="6"
+                         Grid.Column="1"
+                         Visibility="{Binding IsChecked, ElementName=chkSabado, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                    <xctk:TimePicker Grid.Row="6"
+                         Grid.Column="3"
+                         Visibility="{Binding IsChecked, ElementName=chkSabado, Converter={StaticResource BoolToVisibilityConverter}}"/>
+
+                    <!-- DOMINGO -->
+                    <CheckBox x:Name="chkDomingo" Grid.Row="7" Content="Domingo"/>
+                    <xctk:TimePicker Grid.Row="7"
+                         Grid.Column="1"
+                         Visibility="{Binding IsChecked, ElementName=chkDomingo, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                    <xctk:TimePicker Grid.Row="7"
+                         Grid.Column="3"
+                         Visibility="{Binding IsChecked, ElementName=chkDomingo, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                </Grid>
+            </GroupBox> 
+
+            <!-- BOTÕES -->
+            <StackPanel Grid.Row="5" Orientation="Horizontal"
+                        HorizontalAlignment="Right" Margin="0,5,0,0">
+                <Button Content="Salvar" Width="110" Margin="5"/>
+                <Button Content="Cancelar" Width="110" Margin="5"/>
+            </StackPanel>
+
+        </Grid>
+    </GroupBox>
+</Window>

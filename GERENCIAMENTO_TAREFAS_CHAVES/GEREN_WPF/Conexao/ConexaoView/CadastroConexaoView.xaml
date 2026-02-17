@@ -1,0 +1,30 @@
+﻿<Window x:Class="GERENC_WPF.Conexao.ConexaoView.CadastroConexaoView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Nova Conexão"
+        Height="300" Width="420"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="20">
+        <StackPanel>
+
+            <TextBlock Text="Servidor"/>
+            <TextBox Text="{Binding Servidor}" Height="30"/>
+
+            <Button Content="Buscar Conexões"
+                    Height="30"
+                    Margin="0,10,0,0"
+                    Command="{Binding BuscarBancosCommand}"/>
+
+            <TextBlock Text="Banco de Dados" Margin="0,10,0,0"/>
+            <ComboBox ItemsSource="{Binding Bancos}"
+                      SelectedItem="{Binding BancoSelecionado}"
+                      Height="30"/>
+
+            <Button Content="Salvar"
+                    Height="35"
+                    Margin="0,20,0,0"
+                    Command="{Binding SalvarCommand}"/>
+        </StackPanel>
+    </Grid>
+</Window>

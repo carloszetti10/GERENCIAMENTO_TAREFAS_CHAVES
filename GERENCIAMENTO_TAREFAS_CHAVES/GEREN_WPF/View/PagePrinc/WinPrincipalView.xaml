@@ -1,0 +1,67 @@
+﻿<Window x:Class="GERENC_WPF.View.WinPrincipalView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GERENC_WPF.View"
+        mc:Ignorable="d"
+        Title="Principal"
+        MinWidth="1024"
+        MinHeight="640"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- ================= SIDEBAR ================= -->
+        <Border Grid.Column="0"
+                Background="{DynamicResource TextBrush}"
+                Padding="16">
+
+            <StackPanel>
+
+                <!-- Header -->
+                <TextBlock Text="{Binding Tipo}"
+                        Foreground="{DynamicResource TextoBranco}"
+                       FontSize="18"
+                       FontWeight="Bold"
+                       Margin="0,0,0,24" />
+
+                <!-- MENU -->
+                <Button Content="Tela Inicial" Command="{Binding TelaInicial}" Style="{StaticResource ButtonPadrao}" />
+
+                <Button Content="Gerenciamento de Tarefas" Command="{Binding NavegarToGenTarefaCommand}" Style="{StaticResource ButtonPadrao}" />
+
+                <Button Content="Gerenciamento de Chaves" Command="{Binding GerChave}" Style="{StaticResource ButtonPadrao}" />
+
+                <Expander Header="Cadastros"
+                          Style="{StaticResource ExpanderPadrao}">
+                    <StackPanel Margin="16,0,0,0">
+                        <Button Content="Usuários" Command="{Binding AbrirTelaUsuarioCommand}" Style="{StaticResource ButtonPadrao}" />
+                        <Button Content="Instrutores" Command="{Binding AbrirTelaInstrutorCommand}" Style="{StaticResource ButtonPadrao}" />
+                        <Button Content="Cursos" Command="{Binding AbrirTelaCursoCommand}" Style="{StaticResource ButtonPadrao}" />
+                        <Button Content="Salas" Command="{Binding AbrirTelaSalaCommand}" Style="{StaticResource ButtonPadrao}" />
+                    </StackPanel>
+                </Expander>
+
+                <Separator Margin="0,16"/>
+
+                <Button Content="Sair" Command="{Binding VoltarToLoginCommand}" Style="{StaticResource ButtonPadrao}"/>
+
+
+            </StackPanel>
+        </Border>
+
+        <!-- ================= CONTEÚDO ================= -->
+        <Border Grid.Column="1"
+                Background="{DynamicResource BackgroundBrush}"
+                Padding="20">
+
+            <ContentControl Content="{Binding CurrentViewModel}"/>
+        </Border>
+
+    </Grid>
+</Window>

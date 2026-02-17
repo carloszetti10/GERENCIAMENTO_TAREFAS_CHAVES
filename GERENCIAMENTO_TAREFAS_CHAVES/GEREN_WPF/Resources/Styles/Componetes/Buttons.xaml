@@ -1,0 +1,190 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="PrimaryButton" TargetType="Button">
+        <Setter Property="Height" Value="44"/>
+        <Setter Property="Padding" Value="16,0"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Background" Value="#3B82F6"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            CornerRadius="10">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="SuccessButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
+        <Setter Property="Background" Value="#10B981"/>
+    </Style>
+
+    <Style x:Key="InfoButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
+        <Setter Property="Background" Value="#06B6D4"/>
+    </Style>
+
+    <!-- Botão de Status -->
+    <Style x:Key="StatusButtonStyle" TargetType="Button">
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <!--<Border CornerRadius="14"
+                        Padding="12,6"
+                        Background="{Binding Ativo, Converter={StaticResource StatusBackgroundConverter}}">
+                        <TextBlock
+                        Text="{Binding Ativo, Converter={StaticResource StatusTextConverter}}"
+                        FontSize="12"
+                        FontWeight="Bold"
+                        Foreground="{Binding Ativo, Converter={StaticResource StatusTextColorConverter}}"
+                        HorizontalAlignment="Center"/>
+                    </Border>-->
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+
+
+
+
+
+
+
+    <!--<SolidColorBrush x:Key="PrimaryBackground" Color="#F5F7FA"/>
+    <SolidColorBrush x:Key="CardBackground" Color="White"/>
+    <SolidColorBrush x:Key="PrimaryText" Color="#212529"/>
+    <SolidColorBrush x:Key="SecondaryText" Color="#6C757D"/>
+    <SolidColorBrush x:Key="PrimaryColor" Color="#007BFF"/>
+    --><!-- Blue --><!--
+    <SolidColorBrush x:Key="AccentColor" Color="#17A2B8"/>
+    --><!-- Teal --><!--
+    <SolidColorBrush x:Key="BorderColor" Color="#E4E4E4"/>-->
+
+
+   
+
+    <!-- BOTÃO PADRÃO -->
+    <Style x:Key="ButtonPadrao" TargetType="Button">
+        <!-- Texto -->
+        <Setter Property="Foreground" Value="{DynamicResource TextoBranco}"/>
+        <Setter Property="FontFamily" Value="{DynamicResource MenuFont}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+
+        <!-- Layout -->
+        <Setter Property="Padding" Value="14,10"/>
+        <Setter Property="Margin" Value="0,6"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="Cursor" Value="Hand"/>
+
+        <!-- Remove estilo padrão -->
+        <Setter Property="Background" Value="{DynamicResource TextBrush}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+
+        <!-- Template -->
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="Root"
+                     Background="{TemplateBinding Background}"
+                     CornerRadius="3"
+                     Padding="{TemplateBinding Padding}">
+
+                        <!-- Sombra -->
+                        <Border.Effect>
+                            <DropShadowEffect
+                            BlurRadius="15"
+                            ShadowDepth="2"
+                            Direction="270"
+                            Opacity="0.35"/>
+                        </Border.Effect>
+
+                        <ContentPresenter VerticalAlignment="Center"/>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+
+                        <!-- Hover -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Root"
+                             Property="Background"
+                             Value="{DynamicResource MenuHoverBrush}"/>
+                        </Trigger>
+
+                        <!-- Pressionado -->
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Root"
+                             Property="Background"
+                             Value="{DynamicResource MenuPressedBrush}"/>
+
+                            <Setter TargetName="Root"
+                             Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect BlurRadius="6"
+                                               ShadowDepth="0"
+                                               Opacity="0.15"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+
+                        <!-- Desabilitado -->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ExpanderPadrao" TargetType="Expander">
+        <Setter Property="Foreground" Value="{DynamicResource TextoBranco}"/>
+        <Setter Property="FontFamily" Value="{DynamicResource MenuFont}"/>
+        <Setter Property="Background" Value="{DynamicResource TextBrush}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Padding" Value="8"/>
+
+        <!-- Sombra -->
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect
+                BlurRadius="15"
+                ShadowDepth="2"
+                Direction="270"
+                Opacity="0.35"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="ButtonPadraoCabecalho"
+       TargetType="Button"
+       BasedOn="{StaticResource ButtonPadrao}">
+
+        <!-- Texto menor -->
+        <Setter Property="FontSize" Value="12"/>
+
+        <!-- Botão menor -->
+        <Setter Property="Padding" Value="8,4"/>
+        <Setter Property="Margin" Value="0,4"/>
+    </Style>
+
+
+
+</ResourceDictionary>

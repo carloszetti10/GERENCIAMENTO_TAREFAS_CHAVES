@@ -1,0 +1,38 @@
+﻿<Window x:Class="GERENC_WPF.Conexao.ConexaoView.SelecionarConexaoView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Selecionar Conexão" Height="220" Width="400"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Selecione uma conexão:"
+                   FontWeight="Bold"
+                   FontSize="14"/>
+
+        <ComboBox Grid.Row="1"
+                  ItemsSource="{Binding Conexoes}"
+                  SelectedItem="{Binding ConexaoSelecionada}"
+                  Margin="0,10,0,0"/>
+
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="0,20,0,0">
+
+            <Button Content="Nova Conexão"
+                    Width="110"
+                    Margin="0,0,10,0"
+                    Command="{Binding NovaConexaoCommand}"/>
+
+            <Button Content="Entrar"
+                    Width="80"
+                    Command="{Binding EntrarCommand}"/>
+        </StackPanel>
+    </Grid>
+</Window>
