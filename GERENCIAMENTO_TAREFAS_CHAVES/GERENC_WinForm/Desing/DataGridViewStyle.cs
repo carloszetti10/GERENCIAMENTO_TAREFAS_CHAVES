@@ -19,16 +19,18 @@ public static class DataGridViewStyle
         dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
         dgv.ColumnHeadersHeight = 40;
 
-        dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 122, 204);
+        dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(33, 37, 41);
+        dgv.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(33, 37, 41);
         dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
         dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
         dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+        
 
         // células
         dgv.DefaultCellStyle.BackColor = Color.White;
         dgv.DefaultCellStyle.ForeColor = Color.FromArgb(64, 64, 64);
         dgv.DefaultCellStyle.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
-        dgv.DefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 122, 204);
+        dgv.DefaultCellStyle.SelectionBackColor = Color.FromArgb(77, 163, 255);
         dgv.DefaultCellStyle.SelectionForeColor = Color.White;
 
         // linhas alternadas

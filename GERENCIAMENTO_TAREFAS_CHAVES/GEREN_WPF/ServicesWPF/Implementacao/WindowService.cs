@@ -3,6 +3,7 @@ using GERENC_WPF.ServicesWPF.Intefaces;
 using GERENC_WPF.View;
 
 using GERENC_WPF.View.TarefaView;
+using GERENC_WPF.View.UsuarioView;
 using GERENC_WPF.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -25,9 +26,9 @@ namespace GERENC_WPF.ServicesWPF.Implementacao
 
         public void AbrirTela<TWindow>() where TWindow : Window
         {
-            //var win = _provider.GetRequiredService<TWindow>();
-            //win.Owner = Application.Current.MainWindow; // define a Main como dona
-            //win.ShowDialog(); //  MODAL
+            var win = _provider.GetRequiredService<TWindow>();
+            win.Owner = System.Windows.Application.Current.MainWindow; // define a Main como dona
+            win.ShowDialog(); //  MODAL
         }
 
         // LOGIN → SISTEMA
@@ -60,10 +61,12 @@ namespace GERENC_WPF.ServicesWPF.Implementacao
 
         public void AbrirInstrutor()
         {
-            //var win = _provider.GetRequiredService<InstrutorView>();
-            //win.Owner = Application.Current.MainWindow; // define a Main como dona
-            //win.ShowDialog(); //  MODAL
+            var win = _provider.GetRequiredService<UsuarioCadastroView>();
+            win.Owner = System.Windows.Application.Current.MainWindow; // define a Main como dona
+            win.ShowDialog(); //  MODAL
         }
+
+
 
         public void AbrirCategoria()
         {

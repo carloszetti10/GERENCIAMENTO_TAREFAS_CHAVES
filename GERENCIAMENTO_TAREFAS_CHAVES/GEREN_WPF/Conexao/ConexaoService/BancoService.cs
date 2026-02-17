@@ -9,12 +9,14 @@ namespace GERENC_WPF.Conexao.ConexaoService
 
     public static class BancoService
     {
-        public static List<string> ListarBancos(string servidor)
+        public static List<string> ListarBancos(string servidor, string senha)
         {
             var bancos = new List<string>();
 
             var connString =
-            $"Server={servidor};Trusted_Connection=True;TrustServerCertificate=True;";
+            //$"Server={servidor};User=sa;Password={senha};Trusted_Connection=True;TrustServerCertificate=True;";
+            $"Server={servidor};User Id=sa;Password={senha};TrustServerCertificate=True;";
+
 
 
             using var conn = new SqlConnection(connString);

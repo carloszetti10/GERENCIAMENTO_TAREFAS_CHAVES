@@ -10,8 +10,11 @@ namespace GERENC_WPF.Conexao.ConexaoModell
     {
         public string Servidor { get; set; }
         public string Banco { get; set; }
+        public string Senha { get;set; }
 
         public string ConnectionString =>
-            $"Server={Servidor};Database={Banco};Trusted_Connection=True;TrustServerCertificate=True;";
+             $"Server={Servidor};Database={Banco};User Id=sa;Password={Senha};TrustServerCertificate=True;";
+            //$"Server={servidor};User Id=sa;Password={senha};TrustServerCertificate=True;";
+
     }
 }

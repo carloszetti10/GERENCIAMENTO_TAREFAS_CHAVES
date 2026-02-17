@@ -3,7 +3,9 @@ using CommunityToolkit.Mvvm.Input;
 using GERENC_WinForm;
 using GERENC_WinForm.Cadastros.FormCadastros;
 using GERENC_WPF.ServicesWPF.Intefaces;
+using GERENC_WPF.ViewModels.UsuarioCadastroModel;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.ObjectModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -30,7 +32,7 @@ namespace GERENC_WPF.ViewModels
         [RelayCommand]
         public void AbrirTelaInstrutor()
         {
-            var form = _serviceProvider.GetRequiredService<FormCategoria>();
+            var form = _serviceProvider.GetRequiredService<FormConsultor>();
 
             form.ShowDialog();
 
@@ -46,8 +48,7 @@ namespace GERENC_WPF.ViewModels
         [RelayCommand]
         public void AbrirTelaCurso()
         {
-           
-
+            
         }
 
 

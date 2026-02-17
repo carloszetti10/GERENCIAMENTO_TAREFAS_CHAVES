@@ -1,4 +1,5 @@
-﻿using GERENC_WinForm.DialogService;
+﻿using GERENC_APPLICATION.Interfaces.Categoria;
+using GERENC_WinForm.DialogService;
 using GERENC_WinForm.Utils;
 using Microsoft.Extensions.DependencyInjection;
 using System.Windows.Forms;
@@ -8,9 +9,12 @@ namespace GERENC_WinForm
     public partial class TelaBase : Form
     {
 
+       
+        protected readonly ICategoriaService _categoriaService;
+
         private bool bloquearNavegacao = false;
         public EstadoCadastro? _estadoCadastro = null;
-        private readonly IDialogService _dialogo;
+        protected readonly IDialogService _dialogo;
 
         public TelaBase()
         {
@@ -19,11 +23,11 @@ namespace GERENC_WinForm
                 _dialogo = Program.ServiceProvider.GetService<IDialogService>();
         }
 
-        public TelaBase(IDialogService dialogo)
+        public TelaBase(IDialogService dialogo, ICategoriaService categoria)
         {
             InitializeComponent();
 
-           
+            _categoriaService = categoria;
             _dialogo = dialogo;
         }
 
@@ -73,7 +77,7 @@ namespace GERENC_WinForm
         void iniciarButooEnable()
         {
             btnNovo.Enabled = true;
-            btnAlterar.Enabled = false;
+            btnAlterar.Enabled = true;
             btnApagar.Enabled = false;
 
             btnCancelar.Enabled = false;

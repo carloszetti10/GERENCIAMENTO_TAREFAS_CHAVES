@@ -1,0 +1,6 @@
+{
+  "Servidor": ".",
+  "Banco": "GERENC_DB",
+  "Senha": "123",
+  "ConnectionString": "Server=.;User Id=sa;Password=123;TrustServerCertificate=True;"
+}

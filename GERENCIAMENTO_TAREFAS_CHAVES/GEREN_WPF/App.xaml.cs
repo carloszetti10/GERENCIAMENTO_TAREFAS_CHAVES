@@ -136,6 +136,7 @@ namespace GERENC_WPF
 
             // Forms WinForms
             services.AddTransient<FormCategoria>();
+            services.AddTransient<FormConsultor>();
 
 
             #endregion
@@ -162,11 +163,11 @@ namespace GERENC_WPF
         #region ====== MÉTODOS AUXILIARES ======
         public void ShowError(string message, string title = "Erro")
         {
-            //MessageBox.Show(
-            //    message,
-            //    title,
-            //    MessageBoxButton.OK,
-            //    MessageBoxImage.Error);
+            System.Windows.MessageBox.Show(
+                message,
+                title,
+                MessageBoxButton.OK,
+                MessageBoxImage.Error);
         }
 
         private async Task AbrirAppAsync()

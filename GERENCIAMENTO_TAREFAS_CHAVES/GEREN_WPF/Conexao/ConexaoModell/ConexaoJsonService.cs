@@ -26,7 +26,7 @@ namespace GERENC_WPF.Conexao.ConexaoModell
                     throw new Exception("Arquivo de conexão inválido.");
 
                 // 2️⃣ MONTA STRING
-                var connString = MontarConnectionString(dados);
+                var connString = dados.ConnectionString;
 
                 // 3️⃣ TESTA CONEXÃO
                 using var conn = new SqlConnection(connString);

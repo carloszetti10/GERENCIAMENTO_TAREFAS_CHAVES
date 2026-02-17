@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GERENC_APPLICATION.Exceptions;
+using GERENC_INFRAESTRUTURA.Exception;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -15,8 +17,11 @@ namespace GERENC_WPF.Conexao.ConexaoModell
 
     public static class ConexaoStartupService
     {
+        //private static readonly string pasta =
+        //    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Conexoes");
+
         private static readonly string pasta =
-            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Conexoes");
+        @"C:\Users\Suporte - Nortesys\GERENCIAMENTO_TAREFAS_CHAVES\GERENCIAMENTO_TAREFAS_CHAVES\GERENC_WPF";
 
 
 
@@ -32,13 +37,14 @@ namespace GERENC_WPF.Conexao.ConexaoModell
                 var arquivo = Directory
                .GetFiles(pasta, "*.json")
                .First();
-
+                //File.Delete(arquivo);
                 ConexaoJsonService.Conectar(arquivo);
 
             }
             catch (Exception ex)
             {
-                throw;
+                throw new AppException("Erro ao conectar com o arquivo json." + ex.Message + pasta);
+                
             }
            
         }

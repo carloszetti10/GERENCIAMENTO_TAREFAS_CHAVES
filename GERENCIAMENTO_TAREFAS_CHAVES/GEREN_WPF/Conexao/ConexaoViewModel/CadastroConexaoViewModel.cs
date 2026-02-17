@@ -17,6 +17,9 @@ namespace GERENC_WPF.Conexao.ConexaoViewModel
         [ObservableProperty]
         private string servidor;
 
+        [ObservableProperty]
+        private string senha;
+
         public ObservableCollection<string> Bancos { get; } = new();
 
         [ObservableProperty]
@@ -29,14 +32,16 @@ namespace GERENC_WPF.Conexao.ConexaoViewModel
             {
                 Bancos.Clear();
 
-                var lista = BancoService.ListarBancos(Servidor);
+                var lista = BancoService.ListarBancos(Servidor, Senha);
 
                 foreach (var banco in lista)
+                {
                     Bancos.Add(banco);
+                }
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message, "Erro");
+                System.Windows.MessageBox.Show(ex.Message, "Erro");
             }
         }
 
@@ -45,17 +50,18 @@ namespace GERENC_WPF.Conexao.ConexaoViewModel
         {
             if (string.IsNullOrEmpty(BancoSelecionado))
             {
-                //MessageBox.Show("Selecione um banco.");
+                System.Windows.MessageBox.Show("Selecione um banco.");
                 return;
             }
 
             ConexaoFileService.Salvar(new ConexaoModel
             {
                 Servidor = Servidor,
-                Banco = BancoSelecionado
+                Banco = BancoSelecionado,
+                Senha = Senha
             });
 
-            //MessageBox.Show("Conexão salva com sucesso!");
+            System.Windows.MessageBox.Show("Conexão salva com sucesso!");
 
 
         }

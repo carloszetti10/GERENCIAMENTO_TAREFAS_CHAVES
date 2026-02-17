@@ -42,7 +42,7 @@ namespace GERENC_WPF.ViewModels
 
         public void g()
         {
-            Tipo = _usuarioSessao.Usuario.Tipo.ToString();
+            //Tipo = _usuarioSessao.Usuario.Tipo.ToString();
         }
 
         #region ====== TELAS PRINCIPAL======

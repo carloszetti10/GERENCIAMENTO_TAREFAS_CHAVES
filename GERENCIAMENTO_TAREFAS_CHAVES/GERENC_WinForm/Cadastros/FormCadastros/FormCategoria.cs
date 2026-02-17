@@ -2,6 +2,7 @@
 using GERENC_APPLICATION.Exceptions;
 using GERENC_APPLICATION.Interfaces.Categoria;
 using GERENC_INFRAESTRUTURA.Exception;
+using GERENC_WinForm.Desing;
 using GERENC_WinForm.DialogService;
 using GERENC_WinForm.Utils;
 using System;
@@ -32,6 +33,7 @@ namespace GERENC_WinForm.Cadastros.FormCadastros
         public FormCategoria(IDialogService dialogo, ICategoriaService categoria) : base(dialogo)
         {
             InitializeComponent();
+            
             _dialogo = dialogo;
             _categoriaService = categoria;
             //this.Load += FormCategoria_Load;
@@ -39,6 +41,7 @@ namespace GERENC_WinForm.Cadastros.FormCadastros
 
         private async void FormCategoria_Load(object sender, EventArgs e)
         {
+            
             if (_categoriaService != null)
                 await CarregarLista();
         }
