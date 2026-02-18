@@ -1,9 +1,11 @@
 ﻿using GERENC_APPLICATION.DTOs.Categoria;
 using GERENC_APPLICATION.Exceptions;
 using GERENC_APPLICATION.Interfaces.Categoria;
+using GERENC_APPLICATION.Services.Instrutor;
 using GERENC_INFRAESTRUTURA.Exception;
 using GERENC_WinForm.Desing;
 using GERENC_WinForm.DialogService;
+using GERENC_WinForm.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,17 +22,18 @@ namespace GERENC_WinForm.Cadastros.FormCadastros
     {
         private IDialogService _dialogo;
         private readonly ICategoriaService _categoriaService;
+        private readonly IInstrutorService _instrutorService;
 
-        public FormInstrutor(IDialogService dialogo, ICategoriaService categoriaService)
+        public FormInstrutor(IDialogService dialogo, ICategoriaService categoriaService, IInstrutorService instrutorService)
         {
             InitializeComponent();
             _dialogo = dialogo;
             _categoriaService = categoriaService;
+            _instrutorService = instrutorService;
             CheckedListBoxStyle.Apply(checkedListCategoria);
+            TextBoxStyle.Apply(txtNomeInstrutor);
             _ = preencherCkeckListAsync();
-
         }
-
 
         public async Task preencherCkeckListAsync()
         {
@@ -45,8 +48,6 @@ namespace GERENC_WinForm.Cadastros.FormCadastros
                 {
                     checkedListCategoria.Items.Add(categoria);
                 }
-
-
             }
             catch (AppException ex)
             {
@@ -63,25 +64,45 @@ namespace GERENC_WinForm.Cadastros.FormCadastros
         public void pegarCategoriaSelecionada()
         {
             categoriasSelecionadas.Clear();
+            //pegar categoria selcionada
             foreach (CategoriaListDto categoria in checkedListCategoria.CheckedItems)
             {
                 categoriasSelecionadas.Add(categoria);
             }
-        }
 
-        protected override void Gravar()
-        {
-            pegarCategoriaSelecionada();
-            foreach (CategoriaListDto categoria in categoriasSelecionadas)
+            //retornar exeption se a não tiver categoria selecionada
+            if(categoriasSelecionadas.Count == 0)
             {
-
-                MessageBox.Show($"Id: {categoria.Id} - Nome: {categoria.Nome}");
+                throw new AppException("Selecione pelo menos uma categoria.");
             }
         }
 
-        private void checkedListCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        #region =====METODOS HERDADO DA TELABASE======
+        protected override void Alterar()
         {
-           
+            MessageBox.Show("Clicou em alterar");
         }
+        protected override void Apagar()
+        {
+            MessageBox.Show("Apagando");
+        }
+        protected override void Gravar()
+        {
+            try
+            {
+                ValidarCampos.ValidarCamposNome(txtNomeInstrutor, "Nome");
+                pegarCategoriaSelecionada();
+                //ControleButton(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar, tabControl, false);
+            }
+            catch (AppException ex)
+            {
+                _dialogo.ShowAtenc(ex.Message);
+            }
+            catch (InfraestruturaException e)
+            {
+                _dialogo.ShowAtenc(e.Message);
+            }
+        }
+        #endregion
     }
 }

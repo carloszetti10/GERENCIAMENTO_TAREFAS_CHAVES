@@ -129,7 +129,7 @@ namespace GERENC_WinForm
             btnNovo.Location = new Point(5, 3);
             btnNovo.Margin = new Padding(4, 3, 4, 3);
             btnNovo.Name = "btnNovo";
-            btnNovo.Size = new Size(75, 23);
+            btnNovo.Size = new Size(83, 23);
             btnNovo.TabIndex = 0;
             btnNovo.Text = "&NOVO";
             btnNovo.UseVisualStyleBackColor = true;

@@ -1,6 +1,6 @@
 ﻿namespace GERENC_WinForm.Cadastros.FormCadastros
 {
-    partial class FormInstrutor
+    partial class FormInstrutor 
     {
         /// <summary>
         /// Required designer variable.
@@ -128,7 +128,6 @@
             checkedListCategoria.Name = "checkedListCategoria";
             checkedListCategoria.Size = new Size(360, 153);
             checkedListCategoria.TabIndex = 6;
-            checkedListCategoria.SelectedIndexChanged += checkedListCategoria_SelectedIndexChanged;
             // 
             // FormInstrutor
             // 

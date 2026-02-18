@@ -40,12 +40,18 @@
             tabCadastro.Controls.Add(label1);
             tabCadastro.Margin = new Padding(5, 3, 5, 3);
             tabCadastro.Padding = new Padding(5, 3, 5, 3);
-            tabCadastro.Size = new Size(536, 197);
+            tabCadastro.Size = new Size(536, 203);
+            tabCadastro.Controls.SetChildIndex(label1, 0);
+            tabCadastro.Controls.SetChildIndex(TNomeCategoria, 0);
+            tabCadastro.Controls.SetChildIndex(pncCadBase, 0);
             // 
             // tabControl
             // 
+            tabControl.DrawMode = TabDrawMode.OwnerDrawFixed;
+            tabControl.ItemSize = new Size(100, 20);
             tabControl.Margin = new Padding(5, 3, 5, 3);
-            tabControl.Size = new Size(544, 225);
+            tabControl.Size = new Size(544, 231);
+            tabControl.SizeMode = TabSizeMode.Fixed;
             // 
             // btnPesquisar
             // 
@@ -64,10 +70,15 @@
             // 
             CBoxTodos.CheckedChanged += CBoxTodos_CheckedChanged;
             // 
+            // pncCadBase
+            // 
+            pncCadBase.Location = new Point(5, 172);
+            pncCadBase.Size = new Size(526, 28);
+            // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(72, 36);
+            label1.Location = new Point(73, 66);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(110, 15);
@@ -76,7 +87,7 @@
             // 
             // TNomeCategoria
             // 
-            TNomeCategoria.Location = new Point(72, 54);
+            TNomeCategoria.Location = new Point(73, 84);
             TNomeCategoria.Margin = new Padding(4, 3, 4, 3);
             TNomeCategoria.Name = "TNomeCategoria";
             TNomeCategoria.Size = new Size(400, 23);

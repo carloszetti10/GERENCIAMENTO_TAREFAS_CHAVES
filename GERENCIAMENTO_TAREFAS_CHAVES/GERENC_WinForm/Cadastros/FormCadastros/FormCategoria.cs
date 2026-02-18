@@ -22,10 +22,10 @@ namespace GERENC_WinForm.Cadastros.FormCadastros
     public partial class FormCategoria : TelaBase
     {
         // construtor obrigatório para o Designer
-        public FormCategoria()
-        {
-            InitializeComponent();
-        }
+        //public FormCategoria()
+        //{
+        //    InitializeComponent();
+        //}
 
         // construtor usado pelo DI
         private IDialogService _dialogo;
@@ -46,6 +46,7 @@ namespace GERENC_WinForm.Cadastros.FormCadastros
                 await CarregarLista();
         }
 
+        #region =====METODOS HERDADO DA TELABASE======
         protected override void Gravar()
         {
             try
@@ -71,6 +72,16 @@ namespace GERENC_WinForm.Cadastros.FormCadastros
             }
         }
 
+        protected override void Alterar()
+        {
+            MessageBox.Show("Clicou em alterar");
+        }
+
+        protected override void Apagar()
+        {
+            MessageBox.Show("Apagando");
+        }
+        #endregion
         public void ValidarCampo()
         {
             if (string.IsNullOrWhiteSpace(TNomeCategoria.Text))

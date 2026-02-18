@@ -14,17 +14,25 @@ namespace GERENC_WinForm.Desing
             txt.Font = new Font("Segoe UI", 11F, FontStyle.Regular);
             txt.BackColor = Color.White;
             txt.ForeColor = Color.FromArgb(33, 37, 41);
-            txt.Margin = new Padding(5);
+
+            // Painel para simular borda inferior
+            Panel border = new Panel();
+            border.Height = 2;
+            border.Dock = DockStyle.Bottom;
+            border.BackColor = Color.FromArgb(200, 200, 200);
+
+            txt.Controls.Add(border);
+
 
             // Evento foco
             txt.Enter += (s, e) =>
             {
-                txt.BackColor = Color.FromArgb(240, 248, 255); // leve azul
+                border.BackColor = Color.FromArgb(0, 120, 215); // azul moderno
             };
 
             txt.Leave += (s, e) =>
             {
-                txt.BackColor = Color.White;
+                border.BackColor = Color.FromArgb(200, 200, 200);
             };
 
             // Desabilitado
@@ -32,8 +40,9 @@ namespace GERENC_WinForm.Desing
             {
                 if (!txt.Enabled)
                 {
-                    txt.BackColor = Color.FromArgb(240, 240, 240);
-                    txt.ForeColor = Color.FromArgb(150, 150, 150);
+                    txt.BackColor = Color.FromArgb(245, 245, 245);
+                    txt.ForeColor = Color.Gray;
+                    border.BackColor = Color.LightGray;
                 }
                 else
                 {

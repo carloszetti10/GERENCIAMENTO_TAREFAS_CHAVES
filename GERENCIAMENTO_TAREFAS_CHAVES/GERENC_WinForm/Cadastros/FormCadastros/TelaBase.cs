@@ -19,6 +19,7 @@ namespace GERENC_WinForm
         public TelaBase()
         {
             InitializeComponent();
+
             if (!DesignMode && Program.ServiceProvider != null)
                 _dialogo = Program.ServiceProvider.GetService<IDialogService>();
         }
@@ -41,13 +42,19 @@ namespace GERENC_WinForm
             tabConsulta = tabControl.TabPages[1];
         }
 
-        #region ===== METODOS VIRTUAIS =========
+        #region ===== METODOS ABSTRACT =========
         protected virtual void Gravar()
         {
+            
         }
 
         protected virtual void Alterar()
         {
+
+        }
+        protected virtual void Apagar()
+        {
+
         }
         #endregion
 
@@ -72,6 +79,11 @@ namespace GERENC_WinForm
                 tabPrincipal.SelectedTab = tabCadastro;
         }
 
+        public void ControllerNovo()
+        {
+
+        }
+
         void iniciarButooEnable()
         {
             btnNovo.Enabled = true;
@@ -82,7 +94,6 @@ namespace GERENC_WinForm
             btnGravar.Enabled = false;
             setarDesingButton();
         }
-
         private void btnNovo_Click(object sender, EventArgs e)
         {
             try
@@ -99,6 +110,7 @@ namespace GERENC_WinForm
             try
             {
                 ControleButton(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar, tabControl, true);
+                Alterar();
             }
             finally
             {
@@ -120,15 +132,16 @@ namespace GERENC_WinForm
         {
             try
             {
-                ControleButton(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar, tabControl, false);
                 Gravar();
-
-
             }
             finally
             {
                 _estadoCadastro = EstadoCadastro.Nenhum;
             }
+        }
+        private void btnApagar_Click(object sender, EventArgs e)
+        {
+            Apagar();
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -136,10 +149,6 @@ namespace GERENC_WinForm
             this.Close();
         }
 
-        private void btnApagar_Click(object sender, EventArgs e)
-        {
-
-        }
 
         #endregion
 
