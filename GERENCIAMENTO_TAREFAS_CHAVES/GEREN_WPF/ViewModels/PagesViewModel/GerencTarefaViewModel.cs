@@ -32,7 +32,7 @@ namespace GERENC_WPF.ViewModels
         [RelayCommand]
         public void AbrirTelaInstrutor()
         {
-            var form = _serviceProvider.GetRequiredService<FormConsultor>();
+            var form = _serviceProvider.GetRequiredService<FormInstrutor>();
 
             form.ShowDialog();
 

@@ -32,9 +32,9 @@ namespace GERENC_WinForm
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             pnlInferior = new Panel();
             btnFechar = new Button();
-            btnApagar = new Button();
             btnCancelar = new Button();
             btnGravar = new Button();
+            btnApagar = new Button();
             btnAlterar = new Button();
             btnNovo = new Button();
             tabControl = new TabControl();
@@ -60,19 +60,18 @@ namespace GERENC_WinForm
             // pnlInferior
             // 
             pnlInferior.Controls.Add(btnFechar);
-            pnlInferior.Controls.Add(btnApagar);
             pnlInferior.Controls.Add(btnCancelar);
             pnlInferior.Controls.Add(btnGravar);
             pnlInferior.Dock = DockStyle.Bottom;
-            pnlInferior.Location = new Point(0, 406);
+            pnlInferior.Location = new Point(0, 412);
             pnlInferior.Margin = new Padding(4, 3, 4, 3);
             pnlInferior.Name = "pnlInferior";
-            pnlInferior.Size = new Size(548, 44);
+            pnlInferior.Size = new Size(529, 38);
             pnlInferior.TabIndex = 0;
             // 
             // btnFechar
             // 
-            btnFechar.Location = new Point(465, 9);
+            btnFechar.Location = new Point(446, 6);
             btnFechar.Margin = new Padding(4, 3, 4, 3);
             btnFechar.Name = "btnFechar";
             btnFechar.Size = new Size(75, 23);
@@ -81,23 +80,12 @@ namespace GERENC_WinForm
             btnFechar.UseVisualStyleBackColor = true;
             btnFechar.Click += btnFechar_Click;
             // 
-            // btnApagar
-            // 
-            btnApagar.Location = new Point(179, 9);
-            btnApagar.Margin = new Padding(4, 3, 4, 3);
-            btnApagar.Name = "btnApagar";
-            btnApagar.Size = new Size(75, 23);
-            btnApagar.TabIndex = 4;
-            btnApagar.Text = "APAGAR";
-            btnApagar.UseVisualStyleBackColor = true;
-            btnApagar.Click += btnApagar_Click;
-            // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(96, 9);
+            btnCancelar.Location = new Point(104, 6);
             btnCancelar.Margin = new Padding(4, 3, 4, 3);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(75, 23);
+            btnCancelar.Size = new Size(83, 23);
             btnCancelar.TabIndex = 3;
             btnCancelar.Text = "CANCELAR";
             btnCancelar.UseVisualStyleBackColor = true;
@@ -105,21 +93,32 @@ namespace GERENC_WinForm
             // 
             // btnGravar
             // 
-            btnGravar.Location = new Point(13, 9);
+            btnGravar.Location = new Point(13, 6);
             btnGravar.Margin = new Padding(4, 3, 4, 3);
             btnGravar.Name = "btnGravar";
-            btnGravar.Size = new Size(75, 23);
+            btnGravar.Size = new Size(83, 23);
             btnGravar.TabIndex = 1;
             btnGravar.Text = "GRAVAR";
             btnGravar.UseVisualStyleBackColor = true;
             btnGravar.Click += btnGravar_Click;
+            // 
+            // btnApagar
+            // 
+            btnApagar.Location = new Point(96, 6);
+            btnApagar.Margin = new Padding(4, 3, 4, 3);
+            btnApagar.Name = "btnApagar";
+            btnApagar.Size = new Size(83, 23);
+            btnApagar.TabIndex = 4;
+            btnApagar.Text = "APAGAR";
+            btnApagar.UseVisualStyleBackColor = true;
+            btnApagar.Click += btnApagar_Click;
             // 
             // btnAlterar
             // 
             btnAlterar.Location = new Point(5, 6);
             btnAlterar.Margin = new Padding(4, 3, 4, 3);
             btnAlterar.Name = "btnAlterar";
-            btnAlterar.Size = new Size(75, 23);
+            btnAlterar.Size = new Size(83, 23);
             btnAlterar.TabIndex = 2;
             btnAlterar.Text = "ALTERAR";
             btnAlterar.UseVisualStyleBackColor = true;
@@ -127,7 +126,7 @@ namespace GERENC_WinForm
             // 
             // btnNovo
             // 
-            btnNovo.Location = new Point(5, 2);
+            btnNovo.Location = new Point(5, 3);
             btnNovo.Margin = new Padding(4, 3, 4, 3);
             btnNovo.Name = "btnNovo";
             btnNovo.Size = new Size(75, 23);
@@ -145,7 +144,7 @@ namespace GERENC_WinForm
             tabControl.Margin = new Padding(4, 3, 4, 3);
             tabControl.Name = "tabControl";
             tabControl.SelectedIndex = 0;
-            tabControl.Size = new Size(548, 406);
+            tabControl.Size = new Size(529, 412);
             tabControl.TabIndex = 2;
             tabControl.Selecting += tabControl_Selecting;
             // 
@@ -157,7 +156,7 @@ namespace GERENC_WinForm
             tabCadastro.Margin = new Padding(4, 3, 4, 3);
             tabCadastro.Name = "tabCadastro";
             tabCadastro.Padding = new Padding(4, 3, 4, 3);
-            tabCadastro.Size = new Size(540, 378);
+            tabCadastro.Size = new Size(521, 384);
             tabCadastro.TabIndex = 0;
             tabCadastro.Text = "Cadastro";
             // 
@@ -166,9 +165,9 @@ namespace GERENC_WinForm
             pncCadBase.BackColor = Color.LightGray;
             pncCadBase.Controls.Add(btnNovo);
             pncCadBase.Dock = DockStyle.Bottom;
-            pncCadBase.Location = new Point(4, 347);
+            pncCadBase.Location = new Point(4, 353);
             pncCadBase.Name = "pncCadBase";
-            pncCadBase.Size = new Size(532, 28);
+            pncCadBase.Size = new Size(513, 28);
             pncCadBase.TabIndex = 0;
             // 
             // tabConsulta
@@ -180,7 +179,7 @@ namespace GERENC_WinForm
             tabConsulta.Margin = new Padding(4, 3, 4, 3);
             tabConsulta.Name = "tabConsulta";
             tabConsulta.Padding = new Padding(4, 3, 4, 3);
-            tabConsulta.Size = new Size(540, 378);
+            tabConsulta.Size = new Size(521, 384);
             tabConsulta.TabIndex = 1;
             tabConsulta.Text = "Consulta";
             tabConsulta.UseVisualStyleBackColor = true;
@@ -205,17 +204,18 @@ namespace GERENC_WinForm
             dataList.Location = new Point(4, 51);
             dataList.Margin = new Padding(4, 3, 4, 3);
             dataList.Name = "dataList";
-            dataList.Size = new Size(532, 289);
+            dataList.Size = new Size(513, 295);
             dataList.TabIndex = 2;
             // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(224, 224, 224);
             panel1.Controls.Add(btnAlterar);
+            panel1.Controls.Add(btnApagar);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(4, 340);
+            panel1.Location = new Point(4, 346);
             panel1.Name = "panel1";
-            panel1.Size = new Size(532, 35);
+            panel1.Size = new Size(513, 35);
             panel1.TabIndex = 1;
             // 
             // pnlPesquisa
@@ -227,7 +227,7 @@ namespace GERENC_WinForm
             pnlPesquisa.Location = new Point(4, 3);
             pnlPesquisa.Margin = new Padding(4, 3, 4, 3);
             pnlPesquisa.Name = "pnlPesquisa";
-            pnlPesquisa.Size = new Size(532, 48);
+            pnlPesquisa.Size = new Size(513, 48);
             pnlPesquisa.TabIndex = 0;
             // 
             // CBoxTodos
@@ -263,7 +263,7 @@ namespace GERENC_WinForm
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(245, 246, 248);
-            ClientSize = new Size(548, 450);
+            ClientSize = new Size(529, 450);
             Controls.Add(tabControl);
             Controls.Add(pnlInferior);
             Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);

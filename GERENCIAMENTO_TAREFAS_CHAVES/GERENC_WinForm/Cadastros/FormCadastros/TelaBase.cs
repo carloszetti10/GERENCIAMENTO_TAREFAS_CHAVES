@@ -10,7 +10,7 @@ namespace GERENC_WinForm
     {
 
        
-        protected readonly ICategoriaService _categoriaService;
+        public readonly ICategoriaService _categoriaService;
 
         private bool bloquearNavegacao = false;
         public EstadoCadastro? _estadoCadastro = null;
@@ -23,11 +23,9 @@ namespace GERENC_WinForm
                 _dialogo = Program.ServiceProvider.GetService<IDialogService>();
         }
 
-        public TelaBase(IDialogService dialogo, ICategoriaService categoria)
+        public TelaBase(IDialogService dialogo)
         {
             InitializeComponent();
-
-            _categoriaService = categoria;
             _dialogo = dialogo;
         }
 
@@ -89,7 +87,6 @@ namespace GERENC_WinForm
         {
             try
             {
-                Gravar();
                 ControleButton(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar, tabControl, true);
             }
             finally
@@ -136,7 +133,7 @@ namespace GERENC_WinForm
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void btnApagar_Click(object sender, EventArgs e)

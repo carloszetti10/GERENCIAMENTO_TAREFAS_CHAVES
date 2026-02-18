@@ -136,7 +136,7 @@ namespace GERENC_WPF
 
             // Forms WinForms
             services.AddTransient<FormCategoria>();
-            services.AddTransient<FormConsultor>();
+            services.AddTransient<FormInstrutor>();
 
 
             #endregion

@@ -17,11 +17,11 @@ namespace GERENC_WPF.Conexao.ConexaoModell
 
     public static class ConexaoStartupService
     {
-        //private static readonly string pasta =
-        //    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Conexoes");
-
         private static readonly string pasta =
-        @"C:\Users\Suporte - Nortesys\GERENCIAMENTO_TAREFAS_CHAVES\GERENCIAMENTO_TAREFAS_CHAVES\GERENC_WPF";
+            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Conexoes");
+
+        //private static readonly string pasta =
+        //@"C:\Users\Suporte - Nortesys\GERENCIAMENTO_TAREFAS_CHAVES\GERENCIAMENTO_TAREFAS_CHAVES\GERENC_WPF";
 
 
 

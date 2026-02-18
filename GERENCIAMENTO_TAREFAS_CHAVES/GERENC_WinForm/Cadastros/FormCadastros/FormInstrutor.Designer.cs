@@ -1,6 +1,6 @@
 ﻿namespace GERENC_WinForm.Cadastros.FormCadastros
 {
-    partial class FormConsultor
+    partial class FormInstrutor
     {
         /// <summary>
         /// Required designer variable.
@@ -46,7 +46,7 @@
             tabCadastro.Controls.Add(txtCpfInstrutor);
             tabCadastro.Controls.Add(nome);
             tabCadastro.Controls.Add(txtNomeInstrutor);
-            tabCadastro.Size = new Size(543, 378);
+            tabCadastro.Size = new Size(543, 384);
             tabCadastro.Controls.SetChildIndex(pncCadBase, 0);
             tabCadastro.Controls.SetChildIndex(txtNomeInstrutor, 0);
             tabCadastro.Controls.SetChildIndex(nome, 0);
@@ -58,7 +58,7 @@
             // 
             tabControl.DrawMode = TabDrawMode.OwnerDrawFixed;
             tabControl.ItemSize = new Size(100, 20);
-            tabControl.Size = new Size(551, 406);
+            tabControl.Size = new Size(551, 412);
             tabControl.SizeMode = TabSizeMode.Fixed;
             // 
             // btnPesquisar
@@ -120,19 +120,22 @@
             // 
             // checkedListCategoria
             // 
+            checkedListCategoria.BackColor = Color.White;
+            checkedListCategoria.BorderStyle = BorderStyle.None;
             checkedListCategoria.Dock = DockStyle.Fill;
             checkedListCategoria.FormattingEnabled = true;
             checkedListCategoria.Location = new Point(3, 19);
             checkedListCategoria.Name = "checkedListCategoria";
             checkedListCategoria.Size = new Size(360, 153);
             checkedListCategoria.TabIndex = 6;
+            checkedListCategoria.SelectedIndexChanged += checkedListCategoria_SelectedIndexChanged;
             // 
-            // FormConsultor
+            // FormInstrutor
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(551, 450);
-            Name = "FormConsultor";
+            Name = "FormInstrutor";
             Text = "FormConsultor";
             tabCadastro.ResumeLayout(false);
             tabCadastro.PerformLayout();
@@ -148,6 +151,6 @@
         private Label nome;
         private TextBox txtNomeInstrutor;
         private GroupBox groupBox1;
-        private CheckedListBox checkedListCategoria;
+        public CheckedListBox checkedListCategoria;
     }
 }
