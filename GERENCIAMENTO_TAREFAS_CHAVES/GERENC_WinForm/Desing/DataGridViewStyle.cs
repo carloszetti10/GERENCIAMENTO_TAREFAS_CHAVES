@@ -56,8 +56,8 @@ public static class DataGridViewStyle
 
 
         // seleção em cinza bem claro
-        dgv.DefaultCellStyle.SelectionBackColor = Color.FromArgb(235, 235, 235);
-        dgv.DefaultCellStyle.SelectionForeColor = Color.Black;
+        dgv.DefaultCellStyle.SelectionBackColor = Color.FromArgb(30, 107, 214);
+        dgv.DefaultCellStyle.SelectionForeColor = Color.White;
     }
 
     public static void SetIDSmall(DataGridView dgv)

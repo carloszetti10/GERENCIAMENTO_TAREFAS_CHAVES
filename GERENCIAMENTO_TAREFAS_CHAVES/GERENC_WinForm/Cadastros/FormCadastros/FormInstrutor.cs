@@ -6,6 +6,7 @@ using GERENC_INFRAESTRUTURA.Exception;
 using GERENC_WinForm.Desing;
 using GERENC_WinForm.DialogService;
 using GERENC_WinForm.Utils;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,8 +24,9 @@ namespace GERENC_WinForm.Cadastros.FormCadastros
         private IDialogService _dialogo;
         private readonly ICategoriaService _categoriaService;
         private readonly IInstrutorService _instrutorService;
+        private readonly IServiceProvider _serviceProvider;
 
-        public FormInstrutor(IDialogService dialogo, ICategoriaService categoriaService, IInstrutorService instrutorService)
+        public FormInstrutor(IDialogService dialogo, ICategoriaService categoriaService, IInstrutorService instrutorService, IServiceProvider serviceProvider)
         {
             InitializeComponent();
             _dialogo = dialogo;
@@ -33,6 +35,7 @@ namespace GERENC_WinForm.Cadastros.FormCadastros
             CheckedListBoxStyle.Apply(checkedListCategoria);
             TextBoxStyle.Apply(txtNomeInstrutor);
             _ = preencherCkeckListAsync();
+            _serviceProvider = serviceProvider;
         }
 
         public async Task preencherCkeckListAsync()
@@ -71,7 +74,7 @@ namespace GERENC_WinForm.Cadastros.FormCadastros
             }
 
             //retornar exeption se a não tiver categoria selecionada
-            if(categoriasSelecionadas.Count == 0)
+            if (categoriasSelecionadas.Count == 0)
             {
                 throw new AppException("Selecione pelo menos uma categoria.");
             }
@@ -92,6 +95,7 @@ namespace GERENC_WinForm.Cadastros.FormCadastros
             {
                 ValidarCampos.ValidarCamposNome(txtNomeInstrutor, "Nome");
                 pegarCategoriaSelecionada();
+                ControllerBtnNovo();
                 //ControleButton(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar, tabControl, false);
             }
             catch (AppException ex)
@@ -104,5 +108,12 @@ namespace GERENC_WinForm.Cadastros.FormCadastros
             }
         }
         #endregion
+
+        private void btnAbrirCategoria_Click(object sender, EventArgs e)
+        {
+            var form = _serviceProvider.GetRequiredService<FormCategoria>();
+
+            form.ShowDialog();
+        }
     }
 }

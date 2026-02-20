@@ -14,7 +14,7 @@ namespace GERENC_WinForm
         [STAThread]
         static void Main()
         {
-            //ApplicationConfiguration.Initialize();
+            ////ApplicationConfiguration.Initialize();
 
             //var services = new ServiceCollection();
 
@@ -23,7 +23,7 @@ namespace GERENC_WinForm
             //services.AddScoped<ICategoriaService, CategoriaService>();
 
             //// tela principal
-            //services.AddSingleton<FormPrincipal>();
+            ////services.AddSingleton<FormPrincipal>();
 
             //// telas filhas
             //services.AddTransient<FormCategoria>();
@@ -31,9 +31,9 @@ namespace GERENC_WinForm
 
             //ServiceProvider = services.BuildServiceProvider();
 
-            //Application.Run(
-            //    ServiceProvider.GetRequiredService<FormPrincipal>()
-            //);
+            ////Application.Run(
+            ////    ServiceProvider.GetRequiredService<FormPrincipal>()
+            ////);
         }
     }
 }

@@ -8,32 +8,23 @@ namespace GERENC_WinForm
 {
     public partial class TelaBase : Form
     {
-
-       
-        public readonly ICategoriaService _categoriaService;
-
+        protected readonly IDialogService _dialogo;
         private bool bloquearNavegacao = false;
         public EstadoCadastro? _estadoCadastro = null;
-        protected readonly IDialogService _dialogo;
 
         public TelaBase()
         {
             InitializeComponent();
-
             if (!DesignMode && Program.ServiceProvider != null)
                 _dialogo = Program.ServiceProvider.GetService<IDialogService>();
         }
-
         public TelaBase(IDialogService dialogo)
         {
             InitializeComponent();
             _dialogo = dialogo;
         }
-
-       
         private void TelaBase_Load(object sender, EventArgs e)
         {
-           
             DataGridViewStyle.Apply(dataList);
             iniciarButooEnable();
             DataGridViewStyle.ApplyT(tabControl);
@@ -41,13 +32,30 @@ namespace GERENC_WinForm
             tabCadastro = tabControl.TabPages[0];
             tabConsulta = tabControl.TabPages[1];
         }
-
-        #region ===== METODOS ABSTRACT =========
-        protected virtual void Gravar()
+        private void tabControl_Selecting(object sender, TabControlCancelEventArgs e)
         {
-            
+            if (bloquearNavegacao)
+            {
+                if (e.TabPage == tabConsulta)
+                    e.Cancel = true;
+            }
+        }
+        public void setarDesingButton()
+        {
+            ButtonStyle.Apply(btnGravar, "gravar");
+            ButtonStyle.Apply(btnAlterar, "editar");
+            ButtonStyle.Apply(btnApagar, "excluir");
+            ButtonStyle.Apply(btnNovo, "novo");
+            ButtonStyle.Apply(btnCancelar, "cancelar");
+            ButtonStyle.Apply(btnPesquisar, "novo");
+            ButtonStyle.Apply(btnFechar, "excluir");
         }
 
+        #region ===== METODOS virtual =========
+        protected virtual void Gravar()
+        {
+
+        }
         protected virtual void Alterar()
         {
 
@@ -56,8 +64,11 @@ namespace GERENC_WinForm
         {
 
         }
-        #endregion
+        protected virtual void Inserir()
+        {
 
+        }
+        #endregion
         #region =====CONTROLES DOS BOTOES=====
         public void ControleButton(Button btnNovo, Button btnAlterar, Button btnCancelar, Button btnGravar, Button btnApagar, TabControl tabPrincipal, Boolean emEdicao)
         {
@@ -69,7 +80,7 @@ namespace GERENC_WinForm
             btnCancelar.Enabled = emEdicao;
             btnGravar.Enabled = emEdicao;
 
-            setarDesingButton() ;
+            setarDesingButton();
 
             // controla bloqueio
             bloquearNavegacao = emEdicao;
@@ -78,11 +89,23 @@ namespace GERENC_WinForm
             if (emEdicao)
                 tabPrincipal.SelectedTab = tabCadastro;
         }
-
-        public void ControllerNovo()
+        public void ControllerBtnNovo()
         {
-
+            ControleButton(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar, tabControl, false);
+            _estadoCadastro = EstadoCadastro.Inserir;
         }
+        public void ControllerBtnAlterar()
+        {
+            ControleButton(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar, tabControl, true);
+            _estadoCadastro = EstadoCadastro.Alterar;
+        }
+
+        public void ControllerBtnCancelar()
+        {
+            ControleButton(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar, tabControl, false);
+            _estadoCadastro = EstadoCadastro.Nenhum;
+        }
+
 
         void iniciarButooEnable()
         {
@@ -94,86 +117,56 @@ namespace GERENC_WinForm
             btnGravar.Enabled = false;
             setarDesingButton();
         }
+
+
+        #endregion
+        #region =====CONTROLES CLICK=====
         private void btnNovo_Click(object sender, EventArgs e)
         {
-            try
-            {
-                ControleButton(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar, tabControl, true);
-            }
-            finally
-            {
-                _estadoCadastro = EstadoCadastro.Inserir;
-            }
+
+            ControleButton(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar, tabControl, true);
+            _estadoCadastro = EstadoCadastro.Inserir;
         }
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                ControleButton(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar, tabControl, true);
-                Alterar();
-            }
-            finally
-            {
-                _estadoCadastro = EstadoCadastro.Alterar;
-            }
+            Alterar();
         }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                ControleButton(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar, tabControl, false);
-            }
-            finally
-            {
-                _estadoCadastro = EstadoCadastro.Nenhum;
-            }
+            ControllerBtnCancelar();
         }
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Gravar();
-            }
-            finally
-            {
-                _estadoCadastro = EstadoCadastro.Nenhum;
-            }
+
+            Gravar();
         }
         private void btnApagar_Click(object sender, EventArgs e)
         {
             Apagar();
         }
-
         private void btnFechar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-
         #endregion
 
-        private void tabControl_Selecting(object sender, TabControlCancelEventArgs e)
+        protected  virtual void PegarObjetoClicandoTabela(object objeto)
         {
-            if (bloquearNavegacao)
+
+        }
+
+        private void dataList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Verifica se clicou em uma linha válida
+            if (e.RowIndex >= 0)
             {
-                if (e.TabPage == tabConsulta)
-                    e.Cancel = true;
+                // Pega o objeto da linha
+                object objetoSelecionado =
+                dataList.Rows[e.RowIndex].DataBoundItem;
+
+                PegarObjetoClicandoTabela(objetoSelecionado);
             }
         }
-
-        public void setarDesingButton()
-        {
-            
-            ButtonStyle.Apply(btnGravar, "gravar");
-            ButtonStyle.Apply(btnAlterar, "editar");
-            ButtonStyle.Apply(btnApagar, "excluir");
-            ButtonStyle.Apply(btnNovo, "novo");
-            ButtonStyle.Apply(btnCancelar, "cancelar");
-            ButtonStyle.Apply(btnPesquisar, "novo");
-            ButtonStyle.Apply(btnFechar, "excluir");
-
-        }
-
-
     }
 }

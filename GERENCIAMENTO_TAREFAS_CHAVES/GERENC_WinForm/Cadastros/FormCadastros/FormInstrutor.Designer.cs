@@ -34,6 +34,7 @@
             txtCpfInstrutor = new TextBox();
             groupBox1 = new GroupBox();
             checkedListCategoria = new CheckedListBox();
+            btnAbrirCategoria = new Button();
             tabCadastro.SuspendLayout();
             tabControl.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -41,6 +42,7 @@
             // 
             // tabCadastro
             // 
+            tabCadastro.Controls.Add(btnAbrirCategoria);
             tabCadastro.Controls.Add(groupBox1);
             tabCadastro.Controls.Add(cpf);
             tabCadastro.Controls.Add(txtCpfInstrutor);
@@ -53,6 +55,7 @@
             tabCadastro.Controls.SetChildIndex(txtCpfInstrutor, 0);
             tabCadastro.Controls.SetChildIndex(cpf, 0);
             tabCadastro.Controls.SetChildIndex(groupBox1, 0);
+            tabCadastro.Controls.SetChildIndex(btnAbrirCategoria, 0);
             // 
             // tabControl
             // 
@@ -111,9 +114,9 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(checkedListCategoria);
-            groupBox1.Location = new Point(15, 141);
+            groupBox1.Location = new Point(15, 149);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(366, 175);
+            groupBox1.Size = new Size(366, 169);
             groupBox1.TabIndex = 5;
             groupBox1.TabStop = false;
             groupBox1.Text = "Categorias";
@@ -126,8 +129,18 @@
             checkedListCategoria.FormattingEnabled = true;
             checkedListCategoria.Location = new Point(3, 19);
             checkedListCategoria.Name = "checkedListCategoria";
-            checkedListCategoria.Size = new Size(360, 153);
+            checkedListCategoria.Size = new Size(360, 147);
             checkedListCategoria.TabIndex = 6;
+            // 
+            // btnAbrirCategoria
+            // 
+            btnAbrirCategoria.Location = new Point(401, 295);
+            btnAbrirCategoria.Name = "btnAbrirCategoria";
+            btnAbrirCategoria.Size = new Size(75, 23);
+            btnAbrirCategoria.TabIndex = 6;
+            btnAbrirCategoria.Text = "btnAbrirCategoria";
+            btnAbrirCategoria.UseVisualStyleBackColor = true;
+            btnAbrirCategoria.Click += btnAbrirCategoria_Click;
             // 
             // FormInstrutor
             // 
@@ -151,5 +164,6 @@
         private TextBox txtNomeInstrutor;
         private GroupBox groupBox1;
         public CheckedListBox checkedListCategoria;
+        private Button btnAbrirCategoria;
     }
 }

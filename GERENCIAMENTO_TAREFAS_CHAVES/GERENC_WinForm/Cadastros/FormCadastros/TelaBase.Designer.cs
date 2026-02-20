@@ -206,6 +206,7 @@ namespace GERENC_WinForm
             dataList.Name = "dataList";
             dataList.Size = new Size(513, 295);
             dataList.TabIndex = 2;
+            dataList.CellDoubleClick += dataList_CellDoubleClick;
             // 
             // panel1
             // 

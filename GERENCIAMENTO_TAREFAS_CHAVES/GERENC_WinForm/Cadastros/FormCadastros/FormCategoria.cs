@@ -51,12 +51,10 @@ namespace GERENC_WinForm.Cadastros.FormCadastros
         {
             try
             {
+                //inserir categoria
                 if (_estadoCadastro == EstadoCadastro.Inserir)
                 {
-                    ValidarCampo();
-                    _categoriaService.createCategoria(new CategoriaCreateDto { Nome = TNomeCategoria.Text });
-                    _dialogo.ShowSuccess("Categoria gravada com sucesso!");
-                    TNomeCategoria.Text = "";
+                    Inserir();
                 }
                 else if (_estadoCadastro == EstadoCadastro.Alterar)
                 {
@@ -72,10 +70,22 @@ namespace GERENC_WinForm.Cadastros.FormCadastros
             }
         }
 
+        #region ==== INSERIR E ALTERAR 
+        protected override void Inserir()
+        {
+                ValidarCampo();
+                _categoriaService.createCategoria(new CategoriaCreateDto { Nome = TNomeCategoria.Text });
+                _dialogo.ShowSuccess("Categoria gravada com sucesso!");
+                TNomeCategoria.Text = "";
+        }
+
         protected override void Alterar()
         {
             MessageBox.Show("Clicou em alterar");
         }
+
+
+        #endregion
 
         protected override void Apagar()
         {
@@ -115,6 +125,13 @@ namespace GERENC_WinForm.Cadastros.FormCadastros
             {
                 txtPesquisa.Enabled = true;
             }    
+        }
+
+        protected override void PegarObjetoClicandoTabela(object objeto)
+        {
+            CategoriaListDto c = (CategoriaListDto)objeto;
+
+            MessageBox.Show($"Cliente: {c.Nome}");
         }
     }
 }
