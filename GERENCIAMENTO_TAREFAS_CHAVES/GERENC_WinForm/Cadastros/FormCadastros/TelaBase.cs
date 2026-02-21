@@ -58,13 +58,17 @@ namespace GERENC_WinForm
         }
         protected virtual void Alterar()
         {
-
+            PegarLinhaSelecionada();
         }
         protected virtual void Apagar()
         {
 
         }
         protected virtual void Inserir()
+        {
+
+        }
+        protected virtual void PegarObjetoClicandoTabela(object objeto)
         {
 
         }
@@ -151,10 +155,7 @@ namespace GERENC_WinForm
 
         #endregion
 
-        protected  virtual void PegarObjetoClicandoTabela(object objeto)
-        {
-
-        }
+        
 
         private void dataList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -166,6 +167,22 @@ namespace GERENC_WinForm
                 dataList.Rows[e.RowIndex].DataBoundItem;
 
                 PegarObjetoClicandoTabela(objetoSelecionado);
+            }
+        }
+
+        private void PegarLinhaSelecionada()
+        {
+            if (dataList.SelectedRows.Count > 0)
+            {
+                var linha = dataList.SelectedRows[0];
+
+                var objetoSelecionado = linha.DataBoundItem;
+
+                PegarObjetoClicandoTabela(objetoSelecionado);
+            }
+            else
+            {
+                MessageBox.Show("Selecione um intem.");
             }
         }
     }

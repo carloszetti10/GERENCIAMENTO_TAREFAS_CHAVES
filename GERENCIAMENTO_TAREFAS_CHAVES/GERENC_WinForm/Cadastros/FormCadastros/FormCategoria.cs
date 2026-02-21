@@ -81,7 +81,7 @@ namespace GERENC_WinForm.Cadastros.FormCadastros
 
         protected override void Alterar()
         {
-            MessageBox.Show("Clicou em alterar");
+            
         }
 
 
@@ -131,7 +131,7 @@ namespace GERENC_WinForm.Cadastros.FormCadastros
         {
             CategoriaListDto c = (CategoriaListDto)objeto;
 
-            MessageBox.Show($"Cliente: {c.Nome}");
+            MessageBox.Show($"Cat: {c.Nome}");
         }
     }
 }

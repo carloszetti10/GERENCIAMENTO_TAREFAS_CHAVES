@@ -203,7 +203,9 @@ namespace GERENC_WinForm
             dataList.GridColor = SystemColors.ScrollBar;
             dataList.Location = new Point(4, 51);
             dataList.Margin = new Padding(4, 3, 4, 3);
+            dataList.MultiSelect = false;
             dataList.Name = "dataList";
+            dataList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataList.Size = new Size(513, 295);
             dataList.TabIndex = 2;
             dataList.CellDoubleClick += dataList_CellDoubleClick;
